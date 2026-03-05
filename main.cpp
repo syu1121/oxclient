@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main()
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 
     const int WINDOW_WIDTH = 960;
@@ -25,11 +25,6 @@ int main()
 
     Client client;
 
-    if (!client.Init("127.0.0.1", 49152))
-    {
-        cout << "Ú‘±Ž¸”s" << endl;
-        return -1;
-    }
 
     client.Run();
 

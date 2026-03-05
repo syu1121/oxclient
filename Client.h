@@ -11,7 +11,7 @@ private:
 	int board[3][3];
 
 public:
-	bool Init(const  char* ip, int port);
+	bool Init();
 	void Run();
 	void Close();
 };

@@ -7,10 +7,10 @@
 #pragma comment(lib,"ws2_32.lib")
 
 
-const char* SERVER_IPADDRESS = "192.168.42.148";
+const char* SERVER_IPADDRESS = "172.0.0.1";
 const unsigned short SERVER_PORT = 8888;
 
-bool Client::Init(const char* ip, int port)
+bool Client::Init()
 {
 	// WinSock2.2Å@èâä˙âª
 	WSADATA wsaData;
@@ -25,10 +25,10 @@ bool Client::Init(const char* ip, int port)
 		return false;
 	}
 
-	sockaddr_in addr;
-	memset(board, 0, sizeof(board));
+	SOCKADDR_IN addr;
+	memset(&addr,0,sizeof(addr));
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(port);
+	addr.sin_port = htons(SERVER_PORT);
 	//addr.sin_addr.S_un.S_addr = inet_addr(ip);
 	inet_pton(AF_INET, SERVER_IPADDRESS, &addr.sin_addr.s_addr);
 	//inet_pton(AF_INET, SERVER_IPADDRESS, &serverSockAddress.sin_addr.s_addr);
