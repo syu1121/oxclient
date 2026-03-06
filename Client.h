@@ -11,6 +11,7 @@ private:
 	int board[3][3];
 
 public:
+	Client();
 	bool Init();
 	void Run();
 	void Close();

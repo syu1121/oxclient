@@ -7,8 +7,13 @@
 #pragma comment(lib,"ws2_32.lib")
 
 
-const char* SERVER_IPADDRESS = "172.0.0.1";
+const char* SERVER_IPADDRESS = "127.0.0.1";
 const unsigned short SERVER_PORT = 8888;
+
+Client::Client()
+{
+	memset(board, 0, sizeof(board));
+}
 
 bool Client::Init()
 {
@@ -37,7 +42,8 @@ bool Client::Init()
 		return false;
 	}
 
-	
+	u_long mode = 1;
+	ioctlsocket(sock, FIONBIO, &mode);
 
 	return true;
 }
@@ -76,7 +82,7 @@ void Client::Run()
 		if (ret > 0)
 		{
 			recvBuff[ret] = '\0';
-
+			printf("recv: %s\n", recvBuff);
 			int index = 0;
 			for (int y = 0; y < 3; y++)
 			{
@@ -84,6 +90,8 @@ void Client::Run()
 				{
 					board[y][x] = recvBuff[index++] - '0';
 				}
+
+				index++;
 			}
 		}
 

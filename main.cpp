@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     SetWindowText("ƒ^ƒCƒgƒ‹");
     SetGraphMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32);
     ChangeWindowMode(TRUE);
-
+    SetAlwaysRunFlag(TRUE);
     if (DxLib_Init() == -1)
     {
         return 0;
@@ -24,7 +24,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
     Client client;
-
+    if (!client.Init())
+    {
+        cout << "Ú‘±Ž¸”s" << endl;
+        return -1;
+    }
 
     client.Run();
 
